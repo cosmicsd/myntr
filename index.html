@@ -58,5 +58,34 @@
     </div>
 
     <script src="app.js"></script>
+    <!-- Auth Modals -->
+<div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+        <i class='bx bx-x close-modal' id="close-auth"></i>
+        
+        <!-- Login Form View -->
+        <div id="login-view">
+            <h3>Welcome Back to Myntr</h3>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email Address" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit" class="auth-submit-btn">Log In</button>
+            </form>
+            <p class="auth-switch">New to Myntr? <a href="#" id="switch-to-signup">Create an account</a></p>
+        </div>
+
+        <!-- Signup Form View -->
+        <div id="signup-view" class="hidden">
+            <h3>Create Your Myntr Account</h3>
+            <form id="signup-form">
+                <input type="text" id="signup-username" placeholder="Username" required>
+                <input type="email" id="signup-email" placeholder="Email Address" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="#" id="switch-to-login">Log In</a></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
