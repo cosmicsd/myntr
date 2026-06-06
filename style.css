@@ -1,0 +1,176 @@
+:root {
+    --bg-main: #0f0f12;
+    --bg-sidebar: #16161d;
+    --bg-card: #1f1f2e;
+    --accent: #00ffcc; /* Sleek minty accent color for Myntr */
+    --text-main: #ffffff;
+    --text-muted: #8b8b9f;
+    --border-color: #2a2a3a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow: hidden; /* Keeps layout fixed, internal scrolling handles content */
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    height: 65px;
+    background-color: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-section i {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.search-bar {
+    display: flex;
+    width: 40%;
+    max-width: 600px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px 0 0 20px;
+    color: white;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 0 20px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    color: var(--accent);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.upload-btn {
+    background-color: var(--accent);
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+}
+
+/* Layout Container */
+.main-container {
+    display: flex;
+    margin-top: 65px;
+    height: calc(100vh - 65px);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 240px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    padding: 15px 10px;
+    transition: width 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item i {
+    font-size: 20px;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--bg-card);
+    color: var(--accent);
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 15px 10px;
+}
+
+/* Content Window */
+.content-window {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Responsive collapse for sidebar */
+@media (max-width: 768px) {
+    .sidebar { width: 70px; }
+    .sidebar span { display: none; }
+    .sidebar-divider { margin: 10px 0; }
+    .search-bar { width: 50%; }
+}
