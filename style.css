@@ -1,176 +1,134 @@
+/* style.css */
 :root {
-    --bg-main: #0f0f12;
-    --bg-sidebar: #16161d;
-    --bg-card: #1f1f2e;
-    --accent: #00ffcc; /* Sleek minty accent color for Myntr */
-    --text-main: #ffffff;
-    --text-muted: #8b8b9f;
-    --border-color: #2a2a3a;
+    --bg-dark: #050505;
+    --bg-panel: #121212;
+    --accent-mint: #00ffa3; /* The Myntr Signature Color */
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --border: #282828;
+    --sidebar-width: 260px;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-    background-color: var(--bg-main);
+    background-color: var(--bg-dark);
     color: var(--text-main);
-    overflow: hidden; /* Keeps layout fixed, internal scrolling handles content */
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+    overflow: hidden;
 }
 
-/* Navbar */
+/* Header / Navbar */
 .navbar {
-    height: 65px;
-    background-color: var(--bg-sidebar);
-    border-bottom: 1px solid var(--border-color);
+    height: 70px;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-section i {
-    font-size: 24px;
-    cursor: pointer;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-mint);
+    text-transform: uppercase;
+    letter-spacing: -1px;
 }
 
 .search-bar {
+    background: #1e1e1e;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 15px;
+    width: 400px;
     display: flex;
-    width: 40%;
-    max-width: 600px;
 }
 
 .search-bar input {
-    width: 100%;
-    padding: 10px 15px;
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-color);
-    border-radius: 20px 0 0 20px;
+    background: transparent;
+    border: none;
     color: white;
+    width: 100%;
     outline: none;
 }
 
-.search-bar button {
-    padding: 0 20px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-left: none;
-    border-radius: 0 20px 20px 0;
-    color: var(--text-muted);
-    cursor: pointer;
-}
-
-.search-bar button:hover {
-    color: var(--accent);
-}
-
-.user-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.upload-btn {
-    background-color: var(--accent);
-    color: #000;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.profile-avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: var(--text-muted);
-}
-
-/* Layout Container */
+/* Sidebar Layout */
 .main-container {
     display: flex;
-    margin-top: 65px;
-    height: calc(100vh - 65px);
+    flex: 1;
 }
 
-/* Sidebar Styling */
 .sidebar {
-    width: 240px;
-    background-color: var(--bg-sidebar);
-    border-right: 1px solid var(--border-color);
-    padding: 15px 10px;
-    transition: width 0.3s ease;
-}
-
-.nav-links {
+    width: var(--sidebar-width);
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.5rem;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 15px;
-    color: var(--text-muted);
+    gap: 12px;
+    padding: 12px 16px;
     text-decoration: none;
-    border-radius: 10px;
+    color: var(--text-dim);
+    border-radius: 12px;
+    transition: 0.2s all ease;
     font-weight: 500;
-    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #1e1e1e;
+    color: var(--accent-mint);
+}
+
+.nav-item.active {
+    background: rgba(0, 255, 163, 0.1);
+    color: var(--accent-mint);
 }
 
 .nav-item i {
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
-.nav-item:hover, .nav-item.active {
-    background-color: var(--bg-card);
-    color: var(--accent);
-}
-
-.sidebar-divider {
-    height: 1px;
-    background-color: var(--border-color);
-    margin: 15px 10px;
-}
-
-/* Content Window */
+/* Main Content Area */
 .content-window {
     flex: 1;
-    padding: 30px;
+    padding: 2rem;
     overflow-y: auto;
+    background: radial-gradient(circle at top left, #0a0a0a, #050505);
 }
 
-/* Responsive collapse for sidebar */
-@media (max-width: 768px) {
-    .sidebar { width: 70px; }
-    .sidebar span { display: none; }
-    .sidebar-divider { margin: 10px 0; }
-    .search-bar { width: 50%; }
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Scrollbar styling for that 2026 feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-mint);
 }
