@@ -1,122 +1,63 @@
-<body>
-    <div id="welcome-portal" class="portal-container">
-        <div class="portal-card">
-            <h1 class="portal-logo">Myntr</h1>
-            <p class="portal-subtitle">The Future of Content & Community</p>
+<div id="welcome-portal" class="portal-container">
+    <div class="portal-card">
+        <h1 class="portal-logo">Myntr</h1>
+        <p class="portal-subtitle">The Future of Content</p>
 
-            <div id="portal-home-view">
-                <button class="portal-btn google-btn" id="google-auth-btn">
-                    <i class='bx bxl-google'></i> Continue with Google
-                </button>
-                
-                <div class="portal-divider"><span>or</span></div>
+        <div id="portal-home-view">
+            <button class="portal-btn google-btn" id="google-auth-btn">
+                <i class='bx bxl-google'></i> Continue with Google
+            </button>
+            
+            <div class="portal-divider"><span>or</span></div>
 
-                <button class="portal-btn primary-btn" id="go-to-email-login">Log In with Email</button>
-                <button class="portal-btn secondary-btn" id="go-to-email-signup">Create an Account</button>
-                
-                <button class="guest-btn" id="continue-as-guest">
-                    Continue as Guest <small>(You won't get the full experience!)</small>
-                </button>
-            </div>
-
-            <div id="portal-login-view" class="hidden">
-                <h3>Log Back In</h3>
-                <form id="portal-login-form">
-                    <input type="email" id="login-email" placeholder="Email Address" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
-                    <button type="submit" class="portal-btn primary-btn">Sign In</button>
-                </form>
-                <button class="back-to-portal-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
-            </div>
-
-            <div id="portal-signup-view" class="hidden">
-                <h3>Join Myntr</h3>
-                <form id="portal-signup-form">
-                    <div class="form-group row">
-                        <input type="email" id="signup-email" placeholder="Email Address" required>
-                        <input type="text" id="signup-username" placeholder="Username" required>
-                    </div>
-                    <div class="form-group row">
-                        <input type="password" id="signup-password" placeholder="Password" required>
-                        <input type="password" id="signup-password-confirm" placeholder="Repeat Password" required>
-                    </div>
-
-                    <div class="form-section-title">Personal Details</div>
-                    <div class="form-group row">
-                        <input type="text" id="signup-birthday" placeholder="Birthday (MM/DD)" required>
-                        <select id="signup-decade" required>
-                            <option value="" disabled selected>Birth Decade</option>
-                            <option value="2020s">2020s</option>
-                            <option value="2010s">2010s</option>
-                            <option value="2000s">2000s</option>
-                            <option value="1990s">1990s</option>
-                            <option value="1980s">1980s</option>
-                        </select>
-                    </div>
-                    
-                    <input type="tel" id="signup-phone" placeholder="Phone Number (Optional)">
-
-                    <div class="form-section-title">Preferences</div>
-                    <div class="form-group">
-                        <label for="signup-filters">Content Filters</label>
-                        <select id="signup-filters">
-                            <option value="standard">Standard (Recommended)</option>
-                            <option value="strict">Strict (Family Safe)</option>
-                            <option value="unfiltered">Unfiltered</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="signup-create-page" checked>
-                        <label for="signup-create-page">Create a default Posting Page (Channel)</label>
-                    </div>
-
-                    <button type="submit" class="portal-btn primary-btn">Complete Registration</button>
-                </form>
-                <button class="back-to-portal-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
-            </div>
+            <button class="portal-btn primary-btn" id="go-to-email-login">Sign In</button>
+            <button class="portal-btn secondary-btn" id="go-to-email-signup">Create Account</button>
+            
+            <button class="guest-btn" id="continue-as-guest">
+                Continue as Guest <small>(Limited Experience)</small>
+            </button>
         </div>
-    </div>
 
-    <div id="app-dashboard" class="hidden">
-        <header class="navbar">
-            <div class="logo-section">
-                <i class='bx bx-menu' id="menu-toggle"></i>
-                <span class="logo">Myntr</span>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search videos, threads, memes...">
-                <button><i class='bx bx-search'></i></button>
-            </div>
-            <div class="user-actions">
+        <div id="portal-signup-view" class="hidden">
+            <form id="portal-signup-form">
+                <div class="form-row">
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="text" id="signup-username" placeholder="Username" required>
                 </div>
-        </header>
+                <div class="form-row">
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <input type="password" id="signup-password-confirm" placeholder="Repeat Password" required>
+                </div>
 
-        <div class="main-container">
-            <aside class="sidebar" id="sidebar">
-                <nav class="nav-links">
-                    <a href="#" class="nav-item active" data-target="home"><i class='bx bx-home-alt-2'></i> <span>Home</span></a>
-                    <a href="#" class="nav-item" data-target="videos"><i class='bx bx-video'></i> <span>Videos</span></a>
-                    <a href="#" class="nav-item" data-target="livestreams"><i class='bx bx-broadcast'></i> <span>Livestreams</span></a>
-                    <a href="#" class="nav-item" data-target="clips"><i class='bx bx-movie-play'></i> <span>Clips</span></a>
-                    <a href="#" class="nav-item" data-target="threads"><i class='bx bx-conversation'></i> <span>Threads</span></a>
-                    <a href="#" class="nav-item" data-target="memes"><i class='bx bx-laugh'></i> <span>Memes</span></a>
-                    <a href="#" class="nav-item" data-target="pages"><i class='bx bx-user-pin'></i> <span>Pages</span></a>
-                    <a href="#" class="nav-item" data-target="chats"><i class='bx bx-message-square-detail'></i> <span>Chats</span></a>
-                    <a href="#" class="nav-item" data-target="friends"><i class='bx bx-group'></i> <span>Friends</span></a>
-                    <div class="sidebar-divider"></div>
-                    <a href="#" class="nav-item" data-target="settings"><i class='bx bx-cog'></i> <span>Settings</span></a>
-                </nav>
-            </aside>
+                <div class="form-row">
+                    <input type="text" id="signup-birthday" placeholder="Birthday (MM/DD)" required>
+                    <select id="signup-decade" required>
+                        <option value="" disabled selected>Birth Decade</option>
+                        <option value="2020s">2020s</option>
+                        <option value="2010s">2010s</option>
+                        <option value="2000s">2000s</option>
+                        <option value="1990s">1990s</option>
+                        <option value="1980s">1980s</option>
+                    </select>
+                </div>
 
-            <main class="content-window" id="content-window">
-                <section id="dynamic-content">
-                    <h2>Welcome to Myntr</h2>
-                    <p>Select a tab from the sidebar to start exploring.</p>
-                </section>
-            </main>
+                <div class="form-row">
+                    <select id="signup-filters">
+                        <option value="standard">Standard Content Filter</option>
+                        <option value="strict">Strict (Family Safe)</option>
+                        <option value="unfiltered">Unfiltered</option>
+                    </select>
+                    <input type="tel" id="signup-phone" placeholder="Phone Number (Optional)">
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="signup-create-page" checked>
+                    <label for="signup-create-page">Create a default posting page</label>
+                </div>
+
+                <button type="submit" class="portal-btn primary-btn">Finish & Launch</button>
+            </form>
+            <button class="back-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
         </div>
     </div>
-
-    <script type="module" src="app.js"></script>
-</body>
+</div>
