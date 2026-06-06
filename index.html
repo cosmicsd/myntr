@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntr - The Future of Content</title>
+    <!-- Using Google Fonts & Boxicons for clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="logo-section">
+            <i class='bx bx-menu' id="menu-toggle"></i>
+            <span class="logo">Myntr</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search videos, threads, memes...">
+            <button><i class='bx bx-search'></i></button>
+        </div>
+        <div class="user-actions">
+            <button class="upload-btn"><i class='bx bx-plus'></i> Create</button>
+            <div class="profile-avatar"></div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- The Left Sidebar (As requested) -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-target="home"><i class='bx bx-home-alt-2'></i> <span>Home</span></a>
+                <a href="#" class="nav-item" data-target="videos"><i class='bx bx-video'></i> <span>Videos</span></a>
+                <a href="#" class="nav-item" data-target="livestreams"><i class='bx bx-broadcast'></i> <span>Livestreams</span></a>
+                <a href="#" class="nav-item" data-target="clips"><i class='bx bx-movie-play'></i> <span>Clips</span></a>
+                <a href="#" class="nav-item" data-target="threads"><i class='bx bx-conversation'></i> <span>Threads</span></a>
+                <a href="#" class="nav-item" data-target="memes"><i class='bx bx-laugh'></i> <span>Memes</span></a>
+                <a href="#" class="nav-item" data-target="pages"><i class='bx bx-user-pin'></i> <span>Pages</span></a>
+                <a href="#" class="nav-item" data-target="chats"><i class='bx bx-message-square-detail'></i> <span>Chats</span></a>
+                <a href="#" class="nav-item" data-target="friends"><i class='bx bx-group'></i> <span>Friends</span></a>
+                
+                <div class="sidebar-divider"></div>
+                
+                <a href="#" class="nav-item" data-target="settings"><i class='bx bx-cog'></i> <span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <!-- Dynamic Main Content Window -->
+        <main class="content-window" id="content-window">
+            <!-- This content will change dynamically based on sidebar clicks -->
+            <section id="dynamic-content">
+                <h2>Welcome to Myntr</h2>
+                <p>Select a tab from the sidebar to start exploring.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
