@@ -1,63 +1,149 @@
-<div id="welcome-portal" class="portal-container">
-    <div class="portal-card">
-        <h1 class="portal-logo">Myntr</h1>
-        <p class="portal-subtitle">The Future of Content</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myntr - The Future of Content</title>
+    <!-- Modern typography & modern interface icon libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        <div id="portal-home-view">
-            <button class="portal-btn google-btn" id="google-auth-btn">
-                <i class='bx bxl-google'></i> Continue with Google
-            </button>
-            
-            <div class="portal-divider"><span>or</span></div>
+    <!-- 1. ENTRY OBOARDING PORTAL (Gated Entry Wrapper) -->
+    <div id="welcome-portal" class="portal-container">
+        <div class="portal-card">
+            <h1 class="portal-logo">Myntr</h1>
+            <p class="portal-subtitle">The Future of Content</p>
 
-            <button class="portal-btn primary-btn" id="go-to-email-login">Sign In</button>
-            <button class="portal-btn secondary-btn" id="go-to-email-signup">Create Account</button>
-            
-            <button class="guest-btn" id="continue-as-guest">
-                Continue as Guest <small>(Limited Experience)</small>
-            </button>
-        </div>
+            <!-- Main Portal Hub Choice Screen -->
+            <div id="portal-home-view">
+                <button class="portal-btn google-btn" id="google-auth-btn">
+                    <i class='bx bxl-google'></i> Continue with Google
+                </button>
+                
+                <div class="portal-divider"><span>or</span></div>
 
-        <div id="portal-signup-view" class="hidden">
-            <form id="portal-signup-form">
-                <div class="form-row">
-                    <input type="email" id="signup-email" placeholder="Email" required>
-                    <input type="text" id="signup-username" placeholder="Username" required>
-                </div>
-                <div class="form-row">
-                    <input type="password" id="signup-password" placeholder="Password" required>
-                    <input type="password" id="signup-password-confirm" placeholder="Repeat Password" required>
-                </div>
+                <button class="portal-btn primary-btn" id="go-to-email-login">Sign In</button>
+                <button class="portal-btn secondary-btn" id="go-to-email-signup">Create Account</button>
+                
+                <button class="guest-btn" id="continue-as-guest">
+                    Continue as Guest <small>(Limited Experience)</small>
+                </button>
+            </div>
 
-                <div class="form-row">
-                    <input type="text" id="signup-birthday" placeholder="Birthday (MM/DD)" required>
-                    <select id="signup-decade" required>
-                        <option value="" disabled selected>Birth Decade</option>
-                        <option value="2020s">2020s</option>
-                        <option value="2010s">2010s</option>
-                        <option value="2000s">2000s</option>
-                        <option value="1990s">1990s</option>
-                        <option value="1980s">1980s</option>
-                    </select>
-                </div>
+            <!-- Email Login Sub-View -->
+            <div id="portal-login-view" class="hidden">
+                <form id="portal-login-form">
+                    <div class="form-row">
+                        <input type="email" id="login-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="portal-btn primary-btn">Authenticate</button>
+                </form>
+                <button class="back-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
+            </div>
 
-                <div class="form-row">
-                    <select id="signup-filters">
-                        <option value="standard">Standard Content Filter</option>
-                        <option value="strict">Strict (Family Safe)</option>
-                        <option value="unfiltered">Unfiltered</option>
-                    </select>
-                    <input type="tel" id="signup-phone" placeholder="Phone Number (Optional)">
-                </div>
+            <!-- Custom Registration / Onboarding Form -->
+            <div id="portal-signup-view" class="hidden">
+                <form id="portal-signup-form">
+                    <div class="form-row">
+                        <input type="email" id="signup-email" placeholder="Email" required>
+                        <input type="text" id="signup-username" placeholder="Username" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <input type="password" id="signup-password-confirm" placeholder="Repeat Password" required>
+                    </div>
 
-                <div class="checkbox-container">
-                    <input type="checkbox" id="signup-create-page" checked>
-                    <label for="signup-create-page">Create a default posting page</label>
-                </div>
+                    <div class="form-row">
+                        <input type="text" id="signup-birthday" placeholder="Birthday (MM/DD)" required>
+                        <select id="signup-decade" required>
+                            <option value="" disabled selected>Birth Decade</option>
+                            <option value="2020s">2020s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="1990s">1990s</option>
+                            <option value="1980s">1980s</option>
+                        </select>
+                    </div>
 
-                <button type="submit" class="portal-btn primary-btn">Finish & Launch</button>
-            </form>
-            <button class="back-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
+                    <div class="form-row">
+                        <select id="signup-filters">
+                            <option value="standard">Standard Content Filter</option>
+                            <option value="strict">Strict (Family Safe)</option>
+                            <option value="unfiltered">Unfiltered</option>
+                        </select>
+                        <input type="tel" id="signup-phone" placeholder="Phone Number (Optional)">
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="signup-create-page" checked>
+                        <label for="signup-create-page">Create a default posting page</label>
+                    </div>
+
+                    <button type="submit" class="portal-btn primary-btn">Finish & Launch</button>
+                </form>
+                <button class="back-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
+            </div>
         </div>
     </div>
-</div>
+
+    <!-- 2. MAIN APPLICATION SHELL (Hidden on boot by app.js logic layout rules) -->
+    <div id="app-dashboard" class="hidden">
+        
+        <!-- Top Application Navigation Bar -->
+        <header class="navbar">
+            <div class="logo-section">
+                <i class='bx bx-menu' id="menu-toggle"></i>
+                <span class="logo">Myntr</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search videos, threads, memes...">
+                <button><i class='bx bx-search'></i></button>
+            </div>
+            <div class="user-actions">
+                <!-- Injected dynamically by app.js session profiles -->
+            </div>
+        </header>
+
+        <!-- Main Window Container Setup -->
+        <div class="main-container">
+            
+            <!-- Left Navigation Sidebar Platform Hubs -->
+            <aside class="sidebar" id="sidebar">
+                <nav class="nav-links">
+                    <a href="#" class="nav-item active" data-target="home"><i class='bx bx-home-alt-2'></i> <span>Home</span></a>
+                    <a href="#" class="nav-item" data-target="videos"><i class='bx bx-video'></i> <span>Videos</span></a>
+                    <a href="#" class="nav-item" data-target="livestreams"><i class='bx bx-broadcast'></i> <span>Livestreams</span></a>
+                    <a href="#" class="nav-item" data-target="clips"><i class='bx bx-movie-play'></i> <span>Clips</span></a>
+                    <a href="#" class="nav-item" data-target="threads"><i class='bx bx-conversation'></i> <span>Threads</span></a>
+                    <a href="#" class="nav-item" data-target="memes"><i class='bx bx-laugh'></i> <span>Memes</span></a>
+                    <a href="#" class="nav-item" data-target="pages"><i class='bx bx-user-pin'></i> <span>Pages</span></a>
+                    <a href="#" class="nav-item" data-target="chats"><i class='bx bx-message-square-detail'></i> <span>Chats</span></a>
+                    <a href="#" class="nav-item" data-target="friends"><i class='bx bx-group'></i> <span>Friends</span></a>
+                    
+                    <div class="sidebar-divider"></div>
+                    
+                    <a href="#" class="nav-item" data-target="settings"><i class='bx bx-cog'></i> <span>Settings</span></a>
+                </nav>
+            </aside>
+
+            <!-- Dynamic Central Feed Viewing Frame Window -->
+            <main class="content-window" id="content-window">
+                <section id="dynamic-content">
+                    <h2>Welcome to Myntr</h2>
+                    <p>Select a tab from the sidebar to start exploring.</p>
+                </section>
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- Live Modular Core Engine JavaScript link connection hook -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
