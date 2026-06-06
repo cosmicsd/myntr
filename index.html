@@ -1,91 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Myntr - The Future of Content</title>
-    <!-- Using Google Fonts & Boxicons for clean, modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
+    <div id="welcome-portal" class="portal-container">
+        <div class="portal-card">
+            <h1 class="portal-logo">Myntr</h1>
+            <p class="portal-subtitle">The Future of Content & Community</p>
 
-    <!-- Top Navigation Bar -->
-    <header class="navbar">
-        <div class="logo-section">
-            <i class='bx bx-menu' id="menu-toggle"></i>
-            <span class="logo">Myntr</span>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search videos, threads, memes...">
-            <button><i class='bx bx-search'></i></button>
-        </div>
-        <div class="user-actions">
-            <button class="upload-btn"><i class='bx bx-plus'></i> Create</button>
-            <div class="profile-avatar"></div>
-        </div>
-    </header>
-
-    <div class="main-container">
-        <!-- The Left Sidebar (As requested) -->
-        <aside class="sidebar" id="sidebar">
-            <nav class="nav-links">
-                <a href="#" class="nav-item active" data-target="home"><i class='bx bx-home-alt-2'></i> <span>Home</span></a>
-                <a href="#" class="nav-item" data-target="videos"><i class='bx bx-video'></i> <span>Videos</span></a>
-                <a href="#" class="nav-item" data-target="livestreams"><i class='bx bx-broadcast'></i> <span>Livestreams</span></a>
-                <a href="#" class="nav-item" data-target="clips"><i class='bx bx-movie-play'></i> <span>Clips</span></a>
-                <a href="#" class="nav-item" data-target="threads"><i class='bx bx-conversation'></i> <span>Threads</span></a>
-                <a href="#" class="nav-item" data-target="memes"><i class='bx bx-laugh'></i> <span>Memes</span></a>
-                <a href="#" class="nav-item" data-target="pages"><i class='bx bx-user-pin'></i> <span>Pages</span></a>
-                <a href="#" class="nav-item" data-target="chats"><i class='bx bx-message-square-detail'></i> <span>Chats</span></a>
-                <a href="#" class="nav-item" data-target="friends"><i class='bx bx-group'></i> <span>Friends</span></a>
+            <div id="portal-home-view">
+                <button class="portal-btn google-btn" id="google-auth-btn">
+                    <i class='bx bxl-google'></i> Continue with Google
+                </button>
                 
-                <div class="sidebar-divider"></div>
-                
-                <a href="#" class="nav-item" data-target="settings"><i class='bx bx-cog'></i> <span>Settings</span></a>
-            </nav>
-        </aside>
+                <div class="portal-divider"><span>or</span></div>
 
-        <!-- Dynamic Main Content Window -->
-        <main class="content-window" id="content-window">
-            <!-- This content will change dynamically based on sidebar clicks -->
-            <section id="dynamic-content">
-                <h2>Welcome to Myntr</h2>
-                <p>Select a tab from the sidebar to start exploring.</p>
-            </section>
-        </main>
+                <button class="portal-btn primary-btn" id="go-to-email-login">Log In with Email</button>
+                <button class="portal-btn secondary-btn" id="go-to-email-signup">Create an Account</button>
+                
+                <button class="guest-btn" id="continue-as-guest">
+                    Continue as Guest <small>(You won't get the full experience!)</small>
+                </button>
+            </div>
+
+            <div id="portal-login-view" class="hidden">
+                <h3>Log Back In</h3>
+                <form id="portal-login-form">
+                    <input type="email" id="login-email" placeholder="Email Address" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="portal-btn primary-btn">Sign In</button>
+                </form>
+                <button class="back-to-portal-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
+            </div>
+
+            <div id="portal-signup-view" class="hidden">
+                <h3>Join Myntr</h3>
+                <form id="portal-signup-form">
+                    <div class="form-group row">
+                        <input type="email" id="signup-email" placeholder="Email Address" required>
+                        <input type="text" id="signup-username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group row">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <input type="password" id="signup-password-confirm" placeholder="Repeat Password" required>
+                    </div>
+
+                    <div class="form-section-title">Personal Details</div>
+                    <div class="form-group row">
+                        <input type="text" id="signup-birthday" placeholder="Birthday (MM/DD)" required>
+                        <select id="signup-decade" required>
+                            <option value="" disabled selected>Birth Decade</option>
+                            <option value="2020s">2020s</option>
+                            <option value="2010s">2010s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="1990s">1990s</option>
+                            <option value="1980s">1980s</option>
+                        </select>
+                    </div>
+                    
+                    <input type="tel" id="signup-phone" placeholder="Phone Number (Optional)">
+
+                    <div class="form-section-title">Preferences</div>
+                    <div class="form-group">
+                        <label for="signup-filters">Content Filters</label>
+                        <select id="signup-filters">
+                            <option value="standard">Standard (Recommended)</option>
+                            <option value="strict">Strict (Family Safe)</option>
+                            <option value="unfiltered">Unfiltered</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="signup-create-page" checked>
+                        <label for="signup-create-page">Create a default Posting Page (Channel)</label>
+                    </div>
+
+                    <button type="submit" class="portal-btn primary-btn">Complete Registration</button>
+                </form>
+                <button class="back-to-portal-btn"><i class='bx bx-left-arrow-alt'></i> Back</button>
+            </div>
+        </div>
     </div>
 
-    <script src="app.js"></script>
-    <!-- Auth Modals -->
-<div class="modal-overlay" id="auth-modal">
-    <div class="modal-card">
-        <i class='bx bx-x close-modal' id="close-auth"></i>
-        
-        <!-- Login Form View -->
-        <div id="login-view">
-            <h3>Welcome Back to Myntr</h3>
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="Email Address" required>
-                <input type="password" id="login-password" placeholder="Password" required>
-                <button type="submit" class="auth-submit-btn">Log In</button>
-            </form>
-            <p class="auth-switch">New to Myntr? <a href="#" id="switch-to-signup">Create an account</a></p>
-        </div>
+    <div id="app-dashboard" class="hidden">
+        <header class="navbar">
+            <div class="logo-section">
+                <i class='bx bx-menu' id="menu-toggle"></i>
+                <span class="logo">Myntr</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search videos, threads, memes...">
+                <button><i class='bx bx-search'></i></button>
+            </div>
+            <div class="user-actions">
+                </div>
+        </header>
 
-        <!-- Signup Form View -->
-        <div id="signup-view" class="hidden">
-            <h3>Create Your Myntr Account</h3>
-            <form id="signup-form">
-                <input type="text" id="signup-username" placeholder="Username" required>
-                <input type="email" id="signup-email" placeholder="Email Address" required>
-                <input type="password" id="signup-password" placeholder="Password" required>
-                <button type="submit" class="auth-submit-btn">Sign Up</button>
-            </form>
-            <p class="auth-switch">Already have an account? <a href="#" id="switch-to-login">Log In</a></p>
+        <div class="main-container">
+            <aside class="sidebar" id="sidebar">
+                <nav class="nav-links">
+                    <a href="#" class="nav-item active" data-target="home"><i class='bx bx-home-alt-2'></i> <span>Home</span></a>
+                    <a href="#" class="nav-item" data-target="videos"><i class='bx bx-video'></i> <span>Videos</span></a>
+                    <a href="#" class="nav-item" data-target="livestreams"><i class='bx bx-broadcast'></i> <span>Livestreams</span></a>
+                    <a href="#" class="nav-item" data-target="clips"><i class='bx bx-movie-play'></i> <span>Clips</span></a>
+                    <a href="#" class="nav-item" data-target="threads"><i class='bx bx-conversation'></i> <span>Threads</span></a>
+                    <a href="#" class="nav-item" data-target="memes"><i class='bx bx-laugh'></i> <span>Memes</span></a>
+                    <a href="#" class="nav-item" data-target="pages"><i class='bx bx-user-pin'></i> <span>Pages</span></a>
+                    <a href="#" class="nav-item" data-target="chats"><i class='bx bx-message-square-detail'></i> <span>Chats</span></a>
+                    <a href="#" class="nav-item" data-target="friends"><i class='bx bx-group'></i> <span>Friends</span></a>
+                    <div class="sidebar-divider"></div>
+                    <a href="#" class="nav-item" data-target="settings"><i class='bx bx-cog'></i> <span>Settings</span></a>
+                </nav>
+            </aside>
+
+            <main class="content-window" id="content-window">
+                <section id="dynamic-content">
+                    <h2>Welcome to Myntr</h2>
+                    <p>Select a tab from the sidebar to start exploring.</p>
+                </section>
+            </main>
         </div>
     </div>
-</div>
+
+    <script type="module" src="app.js"></script>
 </body>
-</html>
