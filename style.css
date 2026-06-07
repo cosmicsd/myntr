@@ -345,3 +345,146 @@ h2 {
     width: 100%;
 }
 .back-btn:hover { color: white; }
+/* --- SUB-SETTINGS ARCHITECTURE --- */
+.settings-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    width: 100%;
+    align-items: start;
+}
+
+.settings-sidebar {
+    background: #0c0c0e;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+}
+
+.settings-sidebar h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--accent-mint);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding-left: 8px;
+}
+
+.settings-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.set-item {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s all;
+}
+
+.set-item:hover {
+    background: #1a1a1f;
+    color: white;
+}
+
+.set-item.active {
+    background: var(--border);
+    color: var(--accent-mint);
+}
+
+/* Right Content Configuration Frame */
+.settings-pane {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    min-height: 450px;
+}
+
+.pane-wrapper h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.pane-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.25rem;
+}
+
+/* Content Element Rows */
+.setting-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 300px;
+}
+
+.setting-row label {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.setting-row select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Danger Zone Destructive Elements Layout */
+.danger-zone {
+    border: 1px dashed #ff4444;
+    background: rgba(255, 68, 68, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.danger-zone h3 {
+    color: #ff4444;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.danger-zone p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+.danger-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.danger-btn:hover {
+    background: #dd3333;
+}
