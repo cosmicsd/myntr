@@ -1,5 +1,6 @@
 // settings-panes.js
 
+
 export const settingsPanes = {
     general: `
         <div class="pane-wrapper">
