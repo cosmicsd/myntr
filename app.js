@@ -176,14 +176,171 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
 });
 
+// --- DYNAMIC CONTENT MODULE CONTROLLER ---
 function loadContent(target) {
     const contentArea = document.getElementById('content-window');
-    const title = target.charAt(0).toUpperCase() + target.slice(1);
     
+    // If user clicked the main Settings tab, render the advanced dual-panel layout
+    if (target === 'settings') {
+        contentArea.innerHTML = `
+            <div id="dynamic-content" class="settings-layout">
+                <aside class="settings-sidebar">
+                    <h3>Control Panel</h3>
+                    <nav class="settings-nav">
+                        <button class="set-item active" data-pane="general"><i class='bx bx-slider-alt'></i> General</button>
+                        <button class="set-item" data-pane="account"><i class='bx bx-user-circle'></i> Account</button>
+                        <button class="set-item" data-pane="private"><i class='bx bx-lock-alt'></i> Privacy</button>
+                        <button class="set-item" data-pane="safety"><i class='bx bx-shield-quarter'></i> Safety & Filters</button>
+                        <button class="set-item" data-pane="history"><i class='bx bx-history'></i> History</button>
+                        <button class="set-item" data-pane="performance"><i class='bx bx-tachometer'></i> Performance</button>
+                        <button class="set-item" data-pane="monetary"><i class='bx bx-wallet'></i> Monetary</button>
+                        <button class="set-item" data-pane="advanced"><i class='bx bx-code-block'></i> Advanced</button>
+                    </nav>
+                </aside>
+
+                <main class="settings-pane" id="settings-pane-view">
+                    <div class="pane-wrapper">
+                        <h2>General Settings</h2>
+                        <p class="pane-desc">Manage your core interface preferences, display theme, and localized delivery targets.</p>
+                        <div class="setting-row">
+                            <label>Interface Language</label>
+                            <select><option>English (US)</option><option>Deutsch (German)</option></select>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        `;
+
+        // Bind clicks to the newly injected sub-settings buttons
+        document.querySelectorAll('.set-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.set-item').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                switchSettingsPane(this.getAttribute('data-pane'));
+            });
+        });
+        return;
+    }
+
+    // Default router behavior for standard content streams (Videos, Threads, etc.)
+    const title = target.charAt(0).toUpperCase() + target.slice(1);
     contentArea.innerHTML = `
         <div id="dynamic-content">
             <h2>${title}</h2>
             <p>Welcome to the global <strong>${title}</strong> system on Myntr.</p>
         </div>
     `;
+}
+
+// --- SUB-SETTINGS PANE MANAGER ---
+function switchSettingsPane(pane) {
+    const paneView = document.getElementById('settings-pane-view');
+    
+    switch(pane) {
+        case 'general':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>General Preferences</h2>
+                    <p class="pane-desc">Manage your core interface preferences and localization targets.</p>
+                    <div class="setting-row">
+                        <label>Interface Language</label>
+                        <select><option>English (US)</option><option>Deutsch (German)</option></select>
+                    </div>
+                </div>`;
+            break;
+            
+        case 'account':
+            // Custom management wrapper allowing easy developer wipe routines
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Account Management</h2>
+                    <p class="pane-desc">Manage your cloud profile settings, node credentials, or permanently purge registration data.</p>
+                    
+                    <div class="danger-zone">
+                        <h3>Danger Zone</h3>
+                        <p>Purging your profile will completely clear your account records from our live database indices. This action is absolute and cannot be reversed.</p>
+                        <button class="danger-btn" id="delete-profile-trigger">Purge & Remake Account</button>
+                    </div>
+                </div>`;
+                
+            // Hook up the live database delete routine
+            document.getElementById('delete-profile-trigger').addEventListener('click', deleteUserAccountWorkflow);
+            break;
+
+        case 'private':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Privacy Configuration</h2>
+                    <p class="pane-desc">Adjust discoverability flags and manage access control keys for outside communication.</p>
+                </div>`;
+            break;
+
+        case 'safety':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Safety & Content Filters</h2>
+                    <p class="pane-desc">Calibrate automatic media sorting algorithms and network moderation barriers.</p>
+                </div>`;
+            break;
+
+        case 'history':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Platform Activity History</h2>
+                    <p class="pane-desc">Review past analytical interaction data, site queries, and interface cache timelines.</p>
+                </div>`;
+            break;
+
+        case 'performance':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Performance & Engine Metrics</h2>
+                    <p class="pane-desc">Fine-tune rendering setups, asset caching protocols, and video buffer sizes.</p>
+                </div>`;
+            break;
+
+        case 'monetary':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Monetary & Wallets</h2>
+                    <p class="pane-desc">Link platform tipping metrics, transaction nodes, and content balance logs.</p>
+                </div>`;
+            break;
+
+        case 'advanced':
+            paneView.innerHTML = `
+                <div class="pane-wrapper">
+                    <h2>Advanced Developer Environment</h2>
+                    <p class="pane-desc">Direct hardware parameters, manual database endpoints, and core configuration testing overrides.</p>
+                </div>`;
+            break;
+    }
+}
+
+// --- DANGER ZONE FIRESTORE PURGE WORKFLOW ---
+async function deleteUserAccountWorkflow() {
+    const user = auth.currentUser;
+    if (!user) return alert("No active authenticated session detected.");
+
+    const confirmation = confirm("Are you absolutely sure you want to delete your profile data? This will instantly wipe your document variables from Firestore and log you out.");
+    if (!confirmation) return;
+
+    try {
+        // 1. Delete the profile variables from the live Cloud Firestore database
+        // import { deleteDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js" inside config if needed, or add to your config export list
+        // For standard setup, we can call it directly from your loaded database reference hook
+        const { deleteDoc } = await import("https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js");
+        await deleteDoc(doc(db, "users", user.uid));
+        
+        // 2. Erase the authentication engine node reference directly
+        await user.delete();
+        
+        alert("Account successfully deleted from cloud infrastructure. Redirecting to onboarding...");
+    } catch (error) {
+        if (error.code === 'auth/requires-recent-login') {
+            alert("Security policy override notice: To delete your root cloud record, you must have logged in very recently. Please sign out, re-authenticate, and try again immediately.");
+        } else {
+            alert("Cloud database purge error: " + error.message);
+        }
+    }
 }
