@@ -1,4 +1,4 @@
-/* style.cs */
+/* style.css */
 :root {
     --bg-dark: #050505;
     --bg-panel: #121212;
@@ -36,6 +36,23 @@ body {
     padding: 0 2rem;
     border-bottom: 1px solid var(--border);
     z-index: 1000;
+    width: 100%;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-section i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dim);
+}
+
+.logo-section i:hover {
+    color: white;
 }
 
 .logo {
@@ -53,6 +70,8 @@ body {
     padding: 8px 15px;
     width: 400px;
     display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .search-bar input {
@@ -63,20 +82,63 @@ body {
     outline: none;
 }
 
-/* Sidebar Layout */
-.main-container {
+.search-bar button {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.user-actions {
     display: flex;
-    flex: 1;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s background;
+}
+
+.upload-btn:hover {
+    background: #1e1e1e;
+}
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Master Layout Framework — Replaced Flex with a rigid CSS Grid to fix large monitors */
+.main-container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    height: calc(100vh - 70px);
+    width: 100%;
 }
 
 .sidebar {
-    width: var(--sidebar-width);
     background: var(--bg-panel);
     border-right: 1px solid var(--border);
     padding: 1.5rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 10px 0;
 }
 
 .nav-item {
@@ -105,20 +167,34 @@ body {
     font-size: 1.2rem;
 }
 
-/* Main Content Area */
+/* Main Content Area — Centered layout framework with a secure maximum scaling bounding box */
 .content-window {
-    flex: 1;
-    padding: 2rem;
+    padding: 2.5rem;
     overflow-y: auto;
     background: radial-gradient(circle at top left, #0a0a0a, #050505);
+    display: flex;
+    justify-content: center; 
+}
+
+#dynamic-content {
+    width: 100%;
+    max-width: 1200px; /* Forces content boundaries to stay locked on huge viewports */
+    text-align: left;
 }
 
 h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
 }
 
-/* Scrollbar styling for that 2026 feel */
+#dynamic-content p {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -132,121 +208,12 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-mint);
 }
-/* Auth Layout Elements */
+
+/* System Global Utilities */
 .hidden {
     display: none !important;
 }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-card {
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 420px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 255, 163, 0.05);
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.5rem;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.close-modal:hover {
-    color: var(--accent-mint);
-}
-
-.modal-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.modal-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.modal-card input {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    padding: 12px 16px;
-    border-radius: 8px;
-    color: white;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.modal-card input:focus {
-    border-color: var(--accent-mint);
-}
-
-.auth-submit-btn {
-    background: var(--accent-mint);
-    color: black;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: transform 0.1s;
-}
-
-.auth-submit-btn:active {
-    transform: scale(0.98);
-}
-
-.auth-switch {
-    margin-top: 1.5rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-dim);
-}
-
-.auth-switch a {
-    color: var(--accent-mint);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-/* Navbar Dynamic Auth Element */
-.username-display {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text-main);
-}
 /* Fullscreen Entry Portal Layout */
 .portal-container {
     position: fixed;
@@ -325,14 +292,56 @@ h2 {
 .guest-btn small { display: block; color: #ff5555; margin-top: 4px; font-weight: 500; }
 .guest-btn:hover { color: white; }
 
-/* Dynamic Onboarding Form Specifics */
-.form-section-title { text-align: left; font-size: 0.85rem; text-transform: uppercase; color: var(--accent-mint); letter-spacing: 1px; margin: 1.5rem 0 0.5rem 0; font-weight: 700; }
-.form-group { display: flex; flex-direction: column; text-align: left; gap: 5px; margin-bottom: 1rem; }
-.form-group label { font-size: 0.85rem; color: var(--text-dim); }
-.form-group.row { flex-direction: row; gap: 10px; margin-bottom: 0.75rem; }
-.portal-card input, .portal-card select { background: #1a1a1a; border: 1px solid var(--border); padding: 12px; border-radius: 8px; color: white; outline: none; width: 100%; font-size: 0.9rem; }
-.portal-card input:focus, .portal-card select:focus { border-color: var(--accent-mint); }
-.checkbox-group { flex-direction: row; align-items: center; gap: 10px; margin: 1rem 0; }
-.checkbox-group input { width: auto; cursor: pointer; }
-.back-to-portal-btn { background: transparent; border: none; color: var(--text-dim); cursor: pointer; margin-top: 1.5rem; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; }
-.back-to-portal-btn:hover { color: white; }
+/* Fixed: Styled the row layout inside registration cleanly so fields don't stack awkwardly */
+.form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.form-row input, .form-row select {
+    flex: 1;
+    background: #1a1a1a; 
+    border: 1px solid var(--border); 
+    padding: 12px; 
+    border-radius: 8px; 
+    color: white; 
+    outline: none; 
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.form-row input:focus, .form-row select:focus { 
+    border-color: var(--accent-mint); 
+}
+
+.checkbox-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin: 16px 0; 
+    font-size: 0.85rem; 
+    color: var(--text-dim); 
+    text-align: left; 
+}
+
+.checkbox-container input {
+    width: auto;
+    cursor: pointer;
+}
+
+.back-btn { 
+    background: transparent; 
+    border: none; 
+    color: var(--text-dim); 
+    margin-top: 15px; 
+    cursor: pointer; 
+    font-size: 0.9rem; 
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    width: 100%;
+}
+.back-btn:hover { color: white; }
