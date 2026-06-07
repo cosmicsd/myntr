@@ -488,3 +488,21 @@ h2 {
 .danger-btn:hover {
     background: #dd3333;
 }
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+    width: 100%;
+}
+.save-settings-btn {
+    background: var(--accent-mint);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.save-settings-btn:active { transform: scale(0.98); }
