@@ -337,6 +337,7 @@ h2 {
     color: var(--text-dim); 
     margin-top: 15px; 
     cursor: pointer; 
+    
     font-size: 0.9rem; 
     display: flex;
     align-items: center;
@@ -506,3 +507,137 @@ h2 {
     transition: transform 0.1s;
 }
 .save-settings-btn:active { transform: scale(0.98); }
+/* Threads Dashboard Structural Assembly */
+.threads-layout {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+    width: 100%;
+}
+.threads-sidebar {
+    width: 240px;
+    background: rgba(255,255,255,0.02);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.boards-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.board-item {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.board-item.active, .board-item:hover {
+    background: rgba(0, 255, 204, 0.1);
+    color: var(--accent-mint);
+}
+.threads-feed-window {
+    flex-grow: 1;
+    padding: 1rem;
+}
+.feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.create-post-btn {
+    background: var(--accent-mint);
+    color: black;
+    font-weight: 600;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+/* Individual Thread Reddit-Style Cards */
+.thread-card {
+    display: flex;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.vote-column {
+    background: rgba(255,255,255,0.01);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    gap: 4px;
+    border-right: 1px solid #222;
+}
+.vote-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.vote-btn:hover { color: var(--accent-mint); }
+.post-content-area {
+    padding: 12px;
+    flex-grow: 1;
+}
+.post-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    align-items: center;
+}
+.board-badge { font-weight: 700; color: #fff; }
+.open-thread-trigger {
+    cursor: pointer;
+    margin: 4px 0 8px 0;
+}
+.open-thread-trigger:hover {
+    color: var(--accent-mint);
+    text-decoration: underline;
+}
+.flag-badge.alert {
+    background: #ff5555;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+/* Modal Dialog Layer Configuration */
+.modal-overlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.modal-card {
+    background: #151515;
+    border: 1px solid #252525;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 500px;
+    max-width: 90%;
+}
+.hidden { display: none !important; }
