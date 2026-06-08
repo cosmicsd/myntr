@@ -9,6 +9,7 @@ import {
 } from "./firebase-config.js";
 import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
 import { renderSettingsFramework } from "./settings-handler.js";
+import { renderThreadsFramework } from "./threads-handler.js";
 
 // --- DOM PORTAL VIEW CONTROLS ---
 const welcomePortal = document.getElementById('welcome-portal');
@@ -187,7 +188,13 @@ function loadContent(target) {
         return;
     }
 
-    // Default router behavior for standard content streams (Videos, Threads, etc.)
+    // Hand execution over to the modular threads forum engine
+    if (target === 'threads') {
+        renderThreadsFramework();
+        return;
+    }
+
+    // Default router behavior for standard content streams (Videos, Memes, etc.)
     const title = target.charAt(0).toUpperCase() + target.slice(1);
     contentArea.innerHTML = `
         <div id="dynamic-content">
@@ -196,4 +203,3 @@ function loadContent(target) {
         </div>
     `;
 }
-
